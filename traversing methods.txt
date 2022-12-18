@@ -1,0 +1,10 @@
+
+Points to remember:
+
+traversing the binary search tree:
+
+1. pre order traversing: root , left , right
+
+2. in order traversing: left, root, right -> this always gives sorted values.
+
+3. post order traversing: left, right, root
