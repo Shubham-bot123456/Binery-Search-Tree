@@ -1,63 +1,88 @@
 public class Tree {
     Node rootNode;
-    public Tree(int value){
-        rootNode=new Node(value );
+
+    public Tree(int value) {
+        rootNode = new Node(value);
     }
 
 
     // look up
-    public boolean find(int value){
-        Node indexNode=rootNode;
-        while(indexNode!=null){
-            if(value==indexNode.value)return true;
-            if(indexNode.value<value){
-                indexNode=indexNode.rightNode;
-            }else indexNode=indexNode.leftNode;
+    public boolean find(int value) {
+        Node indexNode = rootNode;
+        while (indexNode != null) {
+            if (value == indexNode.value) return true;
+            if (indexNode.value < value) {
+                indexNode = indexNode.rightNode;
+            } else indexNode = indexNode.leftNode;
         }
         return false;
     }
 
 
-    public void insert(int value){
-        Node indexNode=rootNode;
-        Node previousIndexNode=null;
-        while(indexNode!=null){
-            if(value<indexNode.value){
-                previousIndexNode=indexNode;
-                indexNode=indexNode.leftNode;
-            }
-            else{
-                previousIndexNode=indexNode;
-                indexNode=indexNode.rightNode;
+    public void insert(int value) {
+        Node indexNode = rootNode;
+        Node previousIndexNode = null;
+        while (indexNode != null) {
+            if (value < indexNode.value) {
+                previousIndexNode = indexNode;
+                indexNode = indexNode.leftNode;
+            } else {
+                previousIndexNode = indexNode;
+                indexNode = indexNode.rightNode;
             }
         }
-        if(previousIndexNode.value<value){
-            previousIndexNode.rightNode=new Node(value);
-        }
-        else {
-            previousIndexNode.leftNode=new Node(value);
+        if (previousIndexNode.value < value) {
+            previousIndexNode.rightNode = new Node(value);
+        } else {
+            previousIndexNode.leftNode = new Node(value);
         }
     }
 
-    public void insertEnhanced(int value){
-        Node index=rootNode;
-        while(true){
-            if(index.value<value){
-                if(index.rightNode==null){
-                    index.rightNode=new Node(value);
+    public void insertEnhanced(int value) {
+        Node index = rootNode;
+        while (true) {
+            if (index.value < value) {
+                if (index.rightNode == null) {
+                    index.rightNode = new Node(value);
                     break;
                 }
-                index=index.rightNode;
-            }else{
-                if(index.leftNode==null){
-                    index.leftNode=new Node(value);
+                index = index.rightNode;
+            } else {
+                if (index.leftNode == null) {
+                    index.leftNode = new Node(value);
                     break;
                 }
-                index=index.leftNode;
+                index = index.leftNode;
             }
         }
     }
 
+
+    public void preOrderTraversing(Node rootNode) {
+        //base condition
+        if (rootNode==null)
+            return;
+        System.out.println(rootNode.value);
+        preOrderTraversing(rootNode.leftNode);
+        preOrderTraversing(rootNode.rightNode);
+    }
+
+
+    public void inOrdertraversing(Node rootNode){
+        if(rootNode==null)
+            return;
+        inOrdertraversing(rootNode.leftNode);
+        System.out.println(rootNode.value);
+        inOrdertraversing(rootNode.rightNode);
+    }
+
+    public void postOrdertraversing(Node rootNode){
+        if(rootNode==null)
+            return;
+        postOrdertraversing(rootNode.leftNode);
+        postOrdertraversing(rootNode.rightNode);
+        System.out.println(rootNode.value);
+    }
 
 
 }

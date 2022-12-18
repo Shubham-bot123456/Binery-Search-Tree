@@ -11,7 +11,9 @@ public class Main {
         tree.insertEnhanced(3);
         System.out.println(tree.find(0));
         System.out.println(tree.find(2));
-        System.out.println(tree.rootNode.rightNode.rightNode.rightNode.value);
-        System.out.println(tree.rootNode.leftNode.leftNode);
+//        System.out.println(tree.rootNode.rightNode.rightNode.rightNode.value);
+//        System.out.println(tree.rootNode.leftNode.leftNode);
+   tree.inOrdertraversing(tree.rootNode);
+
     }
 }
