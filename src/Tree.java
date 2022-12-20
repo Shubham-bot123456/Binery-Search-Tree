@@ -123,11 +123,19 @@ public class Tree {
             return indexNode.value;
         int leftNodevalue = findTheMinimum(rootNode.leftNode);
         int rightNodevalue = findTheMinimum(rootNode.rightNode);
-        return Integer.min(leftNodevalue, rightNodevalue);
+        return Integer.min(indexNode.value, Integer.min(leftNodevalue, rightNodevalue));
     }
 
 
+    public boolean equals(Node firstNode, Node secondNode) {
+        if(firstNode.value!=secondNode.value)return false;
+        if(firstNode==null&&secondNode==null)return true;
+        boolean a = equals(firstNode.leftNode, secondNode.leftNode);
+        boolean b = equals(firstNode.rightNode, secondNode.rightNode);
+        return a && b;
 
+
+    }
 
 
 }
