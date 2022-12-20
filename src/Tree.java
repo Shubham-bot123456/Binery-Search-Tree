@@ -60,7 +60,7 @@ public class Tree {
 
     public void preOrderTraversing(Node rootNode) {
         //base condition
-        if (rootNode==null)
+        if (rootNode == null)
             return;
         System.out.println(rootNode.value);
         preOrderTraversing(rootNode.leftNode);
@@ -68,21 +68,66 @@ public class Tree {
     }
 
 
-    public void inOrdertraversing(Node rootNode){
-        if(rootNode==null)
+    public void inOrdertraversing(Node rootNode) {
+        if (rootNode == null)
             return;
         inOrdertraversing(rootNode.leftNode);
         System.out.println(rootNode.value);
         inOrdertraversing(rootNode.rightNode);
     }
 
-    public void postOrdertraversing(Node rootNode){
-        if(rootNode==null)
+    public void postOrdertraversing(Node rootNode) {
+        if (rootNode == null)
             return;
         postOrdertraversing(rootNode.leftNode);
         postOrdertraversing(rootNode.rightNode);
         System.out.println(rootNode.value);
     }
+
+
+    public int findTheHeight(Node rootNode) {
+        Node indexNode = rootNode;
+        if (indexNode.leftNode == null && indexNode.rightNode == null) {
+            return 0;
+        }
+        return 1 + Integer.max(findTheHeight(indexNode.leftNode), findTheHeight(indexNode.rightNode));
+    }
+
+
+    public int findtheHeightIrrespectiveofBinaryTreeStrurcture(Node rootNode) {
+        Node indexNode = rootNode;
+        if (rootNode == null) {
+            return -1;
+        }
+        return 1 + Integer.max(findtheHeightIrrespectiveofBinaryTreeStrurcture(indexNode.leftNode), findtheHeightIrrespectiveofBinaryTreeStrurcture(indexNode.rightNode));
+
+    }
+
+    /*
+    but problem with this kind of approach is the that I am dealing with the ideal kind of tree
+    but there is one more approach down there.
+     */
+    public int findtheminimum(Node rootNode) {
+        Node indexNode = rootNode;
+        int minimumvalue = 0;
+        while (indexNode != null) {
+            minimumvalue = indexNode.value;
+            indexNode = indexNode.leftNode;
+        }
+        return minimumvalue;
+    }
+
+    public int findTheMinimum(Node rootNode) {
+        Node indexNode = rootNode;
+        if (indexNode.leftNode == null && indexNode.rightNode == null)
+            return indexNode.value;
+        int leftNodevalue = findTheMinimum(rootNode.leftNode);
+        int rightNodevalue = findTheMinimum(rootNode.rightNode);
+        return Integer.min(leftNodevalue, rightNodevalue);
+    }
+
+
+
 
 
 }
