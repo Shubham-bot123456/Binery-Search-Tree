@@ -25,10 +25,12 @@ public class Main {
         System.out.println(tree.findTheMinimum(tree.rootNode));
         System.out.println(tree.findTheHeight(tree.rootNode));
         System.out.println(tree.findTheMinimum(tree.rootNode));
-        System.out.println(tree.equals(tree.rootNode,tree1.rootNode));
+        System.out.println(tree.equals(tree.rootNode, tree1.rootNode));
 //        System.out.println("The height of the trree is : "+tree.findTheHeight(tree.rootNode));
-        System.out.println("the height of the tree is : "+tree. findtheHeightIrrespectiveofBinaryTreeStrurcture(tree.rootNode));
-
+        tree.swaproots();
+        System.out.println("the height of the tree is : " + tree.findtheHeightIrrespectiveofBinaryTreeStrurcture(tree.rootNode));
+        System.out.println(tree.isValid(-1, tree.rootNode, 1000000));
+        System.out.println(tree.findNodesAtKthDistance(10));
 
     }
 }

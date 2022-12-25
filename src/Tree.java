@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tree {
     Node rootNode;
 
@@ -128,13 +131,57 @@ public class Tree {
 
 
     public boolean equals(Node firstNode, Node secondNode) {
-        if(firstNode.value!=secondNode.value)return false;
-        if(firstNode==null&&secondNode==null)return true;
+        if (firstNode == null && secondNode == null) return true;
+        if (firstNode.value != secondNode.value) return false;
         boolean a = equals(firstNode.leftNode, secondNode.leftNode);
         boolean b = equals(firstNode.rightNode, secondNode.rightNode);
         return a && b;
+    }
+
+    /*
+    if the tree is valid or not
+    base condition will be leftNode available then return the check condition;
+     */
 
 
+    public boolean isValid(int leftlimit, Node node, int rightLimit) {
+        Node indexNode = node;
+        System.out.println(indexNode.value);
+        //base condition
+        if (node.leftNode == null && node.rightNode == null) {
+            return indexNode.value > leftlimit && indexNode.value < rightLimit;
+        }
+
+        //checking condition.
+        if (!(indexNode.value > leftlimit) || !(indexNode.value < rightLimit))
+            return false;
+        boolean left = isValid(leftlimit,indexNode.leftNode,indexNode.value);
+        boolean right = isValid(indexNode.value,indexNode.rightNode,rightLimit);
+        return left && right;
+    }
+
+
+    // this will disturb the structure of the tree.
+    public void swaproots(){
+        Node temp=rootNode.leftNode;
+        rootNode.leftNode=rootNode.rightNode;
+        rootNode.rightNode=temp;
+    }
+
+    public List<Integer> findNodesAtKthDistance(int distance){
+        List<Integer> resultList=new ArrayList<>();
+        kthDistance(rootNode,distance,resultList);
+        return resultList;
+    }
+    public void kthDistance(Node node,int counter,List resultList){
+        if(node==null)return;
+        Node indexNode=node;
+        if(counter==0){
+            resultList.add(indexNode.value);
+            return;
+        }
+        kthDistance(indexNode.leftNode,counter-1,resultList);
+        kthDistance(indexNode.rightNode, counter-1,resultList);
     }
 
 
