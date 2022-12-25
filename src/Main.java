@@ -30,7 +30,7 @@ public class Main {
         tree.swaproots();
         System.out.println("the height of the tree is : " + tree.findtheHeightIrrespectiveofBinaryTreeStrurcture(tree.rootNode));
         System.out.println(tree.isValid(-1, tree.rootNode, 1000000));
-        System.out.println(tree.findNodesAtKthDistance(10));
-
+        System.out.println(tree.findNodesAtKthDistance(1));
+        System.out.println(tree.levelordertraversing());
     }
 }

@@ -1,3 +1,4 @@
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -183,6 +184,17 @@ public class Tree {
         kthDistance(indexNode.leftNode,counter-1,resultList);
         kthDistance(indexNode.rightNode, counter-1,resultList);
     }
+
+
+    public List<List<Integer>> levelordertraversing(){
+        List<List<Integer>>list=new ArrayList<>();
+        for(int i=0;i<=findTheHeight(rootNode);i++){
+            list.add(findNodesAtKthDistance(i));
+        }
+        return list;
+    }
+
+
 
 
 }
